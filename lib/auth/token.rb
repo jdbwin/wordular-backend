@@ -1,5 +1,5 @@
-class JWT
-  SECRET = Rails.application.secrets.secret_key_base
+class Token
+  SECRET = ENV['TOKEN_SECRET']
 
   class << self
 

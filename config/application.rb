@@ -33,13 +33,17 @@ module WordularRails
     config.api_only = true
 
     # Include in load
-    config.autoload_paths << Rails.root.join('lib')
+    ["lib", "lib/auth"].map do |item|
+      config.eager_load_paths << Rails.root.join(item)
+    end
 
     # CORS
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins "#{ ENV['CORS_ORIGINS'] }"
-        resource "#{ ENV['CORS_RESOURCES'] }"
+        resource "#{ ENV['CORS_RESOURCES'] }",
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
 
