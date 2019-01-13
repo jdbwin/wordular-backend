@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :user do
 
+    resources :words, only: [:create]
     # use dash instead of underscore for readability
     resources :my_words, path: 'my-words', only: [:index]
 
