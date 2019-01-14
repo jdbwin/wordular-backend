@@ -15,9 +15,5 @@ class Token
       nil
     end
 
-    def is_expired?(expiry)
-      Time.now.to_i > expiry
-    end
-
   end
 end

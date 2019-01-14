@@ -3,6 +3,7 @@ class CreateUserWords < ActiveRecord::Migration[5.2]
     create_table :user_words do |t|
       t.references :user
       t.references :word
+
       t.timestamps
     end
   end

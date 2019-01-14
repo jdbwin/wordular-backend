@@ -20,7 +20,7 @@ class User::BaseController < ApplicationController
   def token_details
     details = Token.decode(request.headers["Authorization"])
 
-    if details.nil? || Token.is_expired?(details[:exp])
+    if details.nil?
       raise JWT::VerificationError
     end
 

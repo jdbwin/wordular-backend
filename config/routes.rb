@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :home, only: [:index]
   resources :users, only: [:create]
 
   resource :auth, only: [] do

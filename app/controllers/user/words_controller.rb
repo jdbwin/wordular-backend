@@ -1,8 +1,10 @@
 class User::WordsController < User::BaseController
   def create
-    @word = word_request_params
+    @params = word_request_params
 
-    @word = Word.find_or_create_by(word: @word[:word])
+    @word = Word.where(
+      word: @params[:word], part_of_speech: @params[:part_of_speech]
+    ).first_or_create
 
     @user_word = @current_user.user_words.new(word: @word)
 
